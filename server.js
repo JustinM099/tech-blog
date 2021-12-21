@@ -5,8 +5,9 @@ const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 
+//setup sequelize connection
 const sequelize = require('./config/connection');
-
+//setup connection w/ sequelize store
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
@@ -14,9 +15,8 @@ const PORT = process.env.PORT || 3001;
 
 const hbs = exphbs.create({ helpers });
 
-// Configure and link a session object with the sequelize store
 const sess = {
-  secret: 'Super secret secret',
+  secret: 'open sesame',
   cookie: {},
   resave: false,
   saveUninitialized: true,
@@ -25,7 +25,6 @@ const sess = {
   })
 };
 
-// Add express-session and store as Express.js middleware
 app.use(session(sess));
 
 app.engine('handlebars', hbs.engine);
@@ -38,5 +37,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+  app.listen(PORT, () => console.log(`Now listening on ${PORT}`));
 });
