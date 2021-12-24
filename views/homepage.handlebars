@@ -1,5 +1,24 @@
-{{#each posts as |post|}}
+<nav>
+    <div class="nav-wrapper blue-grey darken-1">
+        <a href="#" class="brand-logo">Tech Blog</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/new-post">Post</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </div>
+</nav>
 
-<div class="card">
-    {{post.username}}
+<div class="container">
+    {{#each posts as |post|}}
+    <div class="card blue-grey">
+        <div class="card-content white-text">
+            <span class="card-title">{{post.title}}</span>
+            <hr>
+            <br>
+            <p class="center-align">{{post.description}}</p>
+            <br>
+            <div class="card-action">{{post.user_id}}</div>
+        </div>
+    </div>
+    {{/each}}
 </div>

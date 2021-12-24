@@ -1,8 +1,8 @@
-const { Comment, Post, User } = require('../../models')
-const withAuth = require('../../utils/auth')
+const { Comment, Post, User } = require('../models')
+const withAuth = require('../utils/auth')
 const router = require('express').Router()
 
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => { //withAuth
     try {
       const postData = await Post.findAll();
   
@@ -27,4 +27,8 @@ router.get('/', withAuth, async (req, res) => {
     res.render('login');
   });
   
+  router.get('/new-post', async (req, res) => {
+    res.render('new-post')
+  })
+
   module.exports = router;

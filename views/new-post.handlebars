@@ -1,1 +1,38 @@
-.
+<nav>
+    <div class="nav-wrapper blue-grey darken-1">
+        <a href="#" class="brand-logo">Tech Blog</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="card blue-grey white-text">
+        <div class="container">
+            <form class="form new-post">
+                <div class="row">
+                    <h4 id="new-post-title">NEW POST</h4>
+                    <div class="col">
+                        <div class="input-field">
+                            <label for="title">TITLE</label>
+                            <input type="text" id="title" name="title" placeholder="Title Your Post Here">
+                        </div>
+                        <div class="input-field">
+                            <label for="post-description">POST</label>
+                            <input type="text" id="post-description" name="post-description"
+                                placeholder="Write Your Post Here">
+                        </div>
+                        <div>
+                            <button type="submit" class="button">POST</button>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="../public/js/index.js"></script>
