@@ -8,4 +8,4 @@ router.use('/api', apiRoutes)
 router.use('/homepage', homepageRoutes)
 
 
-module.exports = router;
+module.exports = router
