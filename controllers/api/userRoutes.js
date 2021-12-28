@@ -1,13 +1,16 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const User = require('../../models/User');
 
+//login
 router.post('/login', async (req, res) => {
-    console.log('Login Route Hit')
+  console.log('Login Route Hit')
   try {
-
+    console.log('Trying To Find User')
     const userData = await User.findOne({ where: { name: req.body.name } })
+    console.log(userData)
 
     if (!userData) {
+      console.log('No User Data')
       res.status(400).json({ message: "I'm sorry, your credentials don't seem to match our database. Please try again." })
       return
     }
@@ -15,6 +18,7 @@ router.post('/login', async (req, res) => {
     const validPassword = await userData.checkPassword(req.body.password)
 
     if (!validPassword) {
+      console.log('Invalid Password')
       res.status(400).json({ message: "I'm sorry, your credentials don't seem to match our database. Please try again." })
       return
     }
@@ -22,12 +26,13 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      
+
       res.json({ user: userData, message: 'Login successful. Welcome.' })
     })
 
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json(err)
+    console.log(err)
   }
 });
 
@@ -35,13 +40,14 @@ router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end()
-    });
+    })
   } else {
     res.status(404).end()
   }
-});
+})
 
-router.get('/users', async (req, res) => {
+//get api/users
+router.get('/', async (req, res) => {
 
   try {
     const data = await User.findAll()
@@ -50,5 +56,27 @@ router.get('/users', async (req, res) => {
     res.status(500).json(err)
   }
 });
+
+//post api/users - create new user
+router.post('/', async (req, res) => {
+  try{
+  const userData = await User.create({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password
+  })
+
+  req.session.save(() => {
+    req.session.user_id = userData.id
+    req.session.name = userData.name
+    req.session.email = userData.email
+    req.session.loggedIn = true
+
+    res.json(userData)
+  })
+}catch(err){
+  res.status(400).json(err)
+}
+})
 
 module.exports = router

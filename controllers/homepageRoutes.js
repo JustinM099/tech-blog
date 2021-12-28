@@ -2,7 +2,7 @@ const { Comment, Post, User } = require('../models')
 const withAuth = require('../utils/auth')
 const router = require('express').Router()
 
-router.get('/', async (req, res) => { //withAuth
+router.get('/', withAuth, async (req, res) => { //withAuth
     try {
       const postData = await Post.findAll();
   
@@ -24,7 +24,7 @@ router.get('/', async (req, res) => { //withAuth
       res.redirect('/');
       return;
     }
-    res.render('login');
+    res.render('login-page');
   });
   
   router.get('/new-post', async (req, res) => {

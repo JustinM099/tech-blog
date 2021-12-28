@@ -4,12 +4,14 @@ const loginFunction = async (e) => {
     e.preventDefault()
     console.log('LOGIN FUNCTION')
     const password = document.querySelector('#password').value.trim()
-    const userName = document.querySelector('#username').value.trim()
+    const name = document.querySelector('#username').value.trim()
+    console.log(password)
+    console.log(name)
 
-    if (password && userName){
-        const res = await fetch('api/users', {
+    if (password && name){
+        const res = await fetch('api/users/login', {
             method: 'POST',
-            body: JSON.stringify({userName, password}),
+            body: JSON.stringify({name, password}),
             headers: {'Content-Type': 'application/json'}
         })
 
@@ -25,9 +27,22 @@ const loginFunction = async (e) => {
 document.querySelector('.login').addEventListener('submit', loginFunction) //login event listener
 
 //logout
-const logoutFunction = async () => {
-    const res = await fetch('../controllers/userRoutes')
-}
+const logout = async () => {
+    console.log('ATTEMPTING TO LOG OUT')
+    const response = await fetch('/api/users/logout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    });
+  
+    if (response.ok) {
+      document.location.replace('/');
+    } else {
+      alert(response.statusText);
+    }
+  };
+  
+document.querySelector('.logout').addEventListener('click', logout);
+  
 
 //create user
 
@@ -37,6 +52,7 @@ const signup = async (e) => {
     const userName = document.querySelector('#signup-username').value.trim();
     const email = document.querySelector('#signup-email').value.trim();
     const password = document.querySelector('#signup-password').value.trim();
+    console.log(userName, email, password)
     if (userName && email && password) {
       const response = await fetch('/api/users', {
         method: 'POST',
@@ -53,6 +69,7 @@ const signup = async (e) => {
   }
 
   document.querySelector('.signup').addEventListener('submit', signup)
+
 //create post
 const newPost = async (e) => {
     e.preventDefault()
@@ -60,7 +77,7 @@ const newPost = async (e) => {
     const title = document.querySelector('#title').value.trim()
     const description = document.querySelector('#post-description').value.trim()
 
-    const res = await fetch('/api/users', {
+    const res = await fetch('/api/posts', {
         method: 'POST',
         body: JSON.stringify({title, description}),
         headers: {'Content-Type': 'application/json'}
