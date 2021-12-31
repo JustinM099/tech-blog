@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const User = require('../../models/User');
+const { User } = require('../../models/');
 
 //login
 router.post('/login', async (req, res) => {
@@ -24,8 +24,10 @@ router.post('/login', async (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
+      req.session.user_id = userData.id
+      req.session.name = userData.name
+      req.session.email = userData.email
+      req.session.logged_in = true
 
       res.json({ user: userData, message: 'Login successful. Welcome.' })
     })
@@ -73,12 +75,13 @@ router.post('/', async (req, res) => {
       req.session.user_id = userData.id
       req.session.name = userData.name
       req.session.email = userData.email
-      req.session.loggedIn = true
+      req.session.logged_in = true
 
       res.json(userData)
     })
   } catch (err) {
     res.status(400).json(err)
+    console.log(err)
   }
 })
 
