@@ -8,7 +8,7 @@ const loginFunction = async (e) => {
   console.log(name)
 
   if (password && name) {
-    const res = await fetch('api/users/login', {
+    const res = await fetch('/api/users/login', {
       method: 'POST',
       body: JSON.stringify({ name, password }),
       headers: { 'Content-Type': 'application/json' }

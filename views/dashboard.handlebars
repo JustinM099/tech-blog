@@ -4,6 +4,7 @@
             <a href="#" class="brand-logo">Tech Blog - Your Posts</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="/new-post">Post</a></li>
+                <li><a href="/homepage">Homepage</a></li>
                 <li><a id="logout" href="" class="logout">Logout</a></li>
             </ul>
         </div>
@@ -21,10 +22,9 @@
             <br>
             <div class="card-action">Posted By {{user.name}}</div>
         </div>
-        <button class="btn" id="edit">comments</button>
+        <a href="/api/post/{{post.id}}"><button class="btn" id="edit-page">edit</button></a>
     </div>
     {{/each}}
 </div>
 
 <script src="/js/logout.js"></script>
-<script src="/js/edit.js"></script>

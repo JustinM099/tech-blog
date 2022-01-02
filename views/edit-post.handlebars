@@ -1,0 +1,47 @@
+<nav>
+    <div class="nav-wrapper blue-grey darken-1">
+        <div class="container">
+            <a href="#" class="brand-logo">Tech Blog</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a id="logout" href="" class="logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container post-container">
+    <div class="card blue-grey">
+        <div class="card-content white-text">
+            <span class="card-title">{{post.title}}</span>
+            <hr>
+            <br>
+            <p class="center-align">{{post.description}}</p>
+            <br>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card blue-grey">
+        <div class="card-content white-text">
+            <form class="edit-form">
+                <div>
+                    <label for="title">Update Title</label>
+                    <input class="input" name="title" type="text" value="{{post.title}}">
+                </div>
+                <div>
+                    <label for="post">Update Your Post</label>
+                    <input class="input" name="post" type="text" value="{{post.description}}">
+                </div>
+                <button type="submit" class="btn" id="edit">update</button>
+                <button type="button" class="btn" id="delete-button">delete</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/js/delete.js"></script>
+<script src="/js/logout.js"></script>
+<script src="/js/comment.js"></script>
+<script src="/js/edit.js"></script>

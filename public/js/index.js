@@ -1,23 +1,23 @@
 
-//create post
-const newPost = async (e) => {
-    e.preventDefault()
+// //create post
+// const newPost = async (e) => {
+//     e.preventDefault()
 
-    const title = document.querySelector('#title').value.trim()
-    const description = document.querySelector('#post-description').value.trim()
+//     const title = document.querySelector('#title').value.trim()
+//     const description = document.querySelector('#post-description').value.trim()
 
-    const res = await fetch('/api/posts', {
-        method: 'POST',
-        body: JSON.stringify({title, description}),
-        headers: {'Content-Type': 'application/json'}
-    })
+//     const res = await fetch('/api/posts', {
+//         method: 'POST',
+//         body: JSON.stringify({title, description}),
+//         headers: {'Content-Type': 'application/json'}
+//     })
 
-    if (res.ok) {
-        document.location.replace('/')
-    } else {
-        alert("I'm sorry, we couldn't create your post!")
-    }
-}
+//     if (res.ok) {
+//         document.location.replace('/')
+//     } else {
+//         alert("I'm sorry, we couldn't create your post!")
+//     }
+// }
 
 //edit post
 

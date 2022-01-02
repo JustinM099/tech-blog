@@ -12,7 +12,7 @@ try{
       include: [
         {
           model: Comment,
-          attributes: ['id', 'description', 'post_id', 'user_id', 'created_at'],
+          attributes: ['id', 'description', 'post_id', 'user_id'],
           include: {
             model: User,
             attributes: ['name', 'email']
@@ -33,5 +33,7 @@ try{
 
 
   });
+
+ 
 
   module.exports = router

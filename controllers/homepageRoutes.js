@@ -12,7 +12,7 @@ router.get('/', withAuth, async (req, res) => { //withAuth
           attributes: ['name'],
         },
       ],
-    });
+    })
     console.log('postData', postData)
     const posts = postData.map((data) => data.get({ plain: true }));
     console.log('Posts', posts)
