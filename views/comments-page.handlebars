@@ -1,0 +1,60 @@
+<nav>
+    <div class="nav-wrapper blue-grey darken-1">
+        <div class="container">
+            <a href="#" class="brand-logo">Tech Blog - Comments</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a id="logout" href="" class="logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container post-container">
+    <div class="card blue-grey">
+        <div class="card-content white-text">
+            <span class="card-title">{{comment.post.title}}</span>
+            <hr>
+            <br>
+            <p class="center-align">{{comment.post.description}}</p>
+            <br>
+            <p>Posted by {{comment.post.user.name}}</p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card blue-grey">
+        <form class="comment-form">
+            <div>
+                <label for="commentTitle">Title Your Comment Here</label>
+                <textarea name="commentTitle"></textarea>
+            </div>
+            <div>
+                <label for="comment">Write A Comment Here</label>
+                <textarea name="comment"></textarea>
+            </div>
+            <div>
+                <button class="btn" type="submit">Post Comment</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{{!-- {{> comments post.comments}} --}}
+<div class="container post-container">
+    {{#each comments as |comment|}}
+    <div class="card blue-grey">
+        <div class="card-content white-text">
+            <span class="card-title">{{comment.title}}</span>
+            <hr>
+            <br>
+            <p class="center-align">{{comment.description}}</p>
+            <br>
+            <div class="card-action">Posted By {{comment.user.name}}</div>
+    {{/each}}
+</div>
+
+
+<script src="/js/logout.js"></script>
+<script src="/js/comment.js"></script>

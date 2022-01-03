@@ -18,12 +18,12 @@ const deleteFunction = async (e) => {
             'Content-Type': 'application/json'
         }
     })
-    if(res.ok){
+    if (res.ok) {
         document.location.replace('/dashboard')
-        }else{
-            console.log(res.status)
-            alert(`I'm sorry, a problem occurred.`)
-        }
+    } else {
+        console.log(res.status)
+        alert(`I'm sorry, a problem occurred.`)
+    }
 }
 
 document.querySelector('#delete-button').addEventListener('click', deleteFunction)

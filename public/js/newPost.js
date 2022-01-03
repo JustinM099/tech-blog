@@ -7,7 +7,9 @@ const newPost = async (e) => {
     if (title && description) {
       const response = await fetch(`/api/post`, {
         method: 'POST',
-        body: JSON.stringify({ title, description }),
+        body: JSON.stringify({ 
+          title, 
+          description }),
         headers: {
           'Content-Type': 'application/json',
         },

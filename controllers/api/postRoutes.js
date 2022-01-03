@@ -1,5 +1,4 @@
 const router = require('express').Router()
-const { append } = require('express/lib/response');
 const { Post, Comment, User } = require('../../models')
 const withAuth = require('../../utils/auth')
 
@@ -73,20 +72,21 @@ router.put('/:id', async (req, res) => {
     }
 })
 
-router.delete(':/id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     console.log(req.params.id)
-   try {
-       const deletedPost = await Post.destroy({
-       where: {
-           id: req.params.id
-       }
-   })
-   if(!deletedPost){
-       res.status(404).json({message: `I'm sorry, we couldn't find that post.`})
-   }}catch(err){
-       console.log(err)
-       res.status(500).json(err)
-   }
+    try {
+        const deletedPost = await Post.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        if (!deletedPost) {
+            res.status(404).json({ message: `I'm sorry, we couldn't find that post.` })
+        }
+    } catch (err) {
+        console.log(err)
+        res.status(500).json(err)
+    }
 
 })
 

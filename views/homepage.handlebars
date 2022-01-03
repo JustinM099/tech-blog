@@ -21,10 +21,9 @@
             <br>
             <div class="card-action">Posted By {{user.name}}</div>
         </div>
-        <button class="btn" id="comments">comments</button>
+        <a href="/api/comment/{{post.id}}"><button class="btn" id="comments">comments</button></a>
     </div>
     {{/each}}
 </div>
 
 <script src="/js/logout.js"></script>
-<script src="/js/comment.js"></script>
