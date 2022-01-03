@@ -10,6 +10,7 @@
   1. [Installation](#installation)
   2. [Usage](#usage)
   3. [Deployment](#deployment)
+  4. [Screenshot](#screenshot)
   4. [Questions](#questions)
   
   ## Installation
@@ -24,7 +25,13 @@ The user navigates to the page through a web browser. If they are not logged in,
   
   ## Deployment
   
-This project is deployed on Heroku. You may reach it by navigating to 
+This project is deployed on Heroku. You may reach it by navigating to https://incredible-tech-blog.herokuapp.com/
+
+  ## Screenshot
+
+Here is a screenshot of the application:
+
+ ![Tech-Blog](tech-blog-screenshot.png)
   
   ## Questions
   
